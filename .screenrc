@@ -1,0 +1,7 @@
+startup_message off
+altscreen on
+caption always "%{=b}%{b}%{C}%{-} %+0=%-w%8L>*%n%{-}%+w%-014< %-45=%{b y}[F9:scr F10:del F11:pr F12:ne] %-012=%{b y}%m-%d %c"
+bindkey -k k9 screen
+bindkey -k k; detach
+bindkey -k F1 prev
+bindkey -k F2 next
