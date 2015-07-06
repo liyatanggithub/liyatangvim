@@ -34,7 +34,7 @@ set showmatch
 "设置折叠，选择用空格键来开关折叠
 set foldenable
 set foldmethod=syntax
-set foldlevelstart=99	"打开文件是默认不折叠代码
+set foldlevelstart=99    "打开文件是默认不折叠代码
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 "ctags cscope lookupfile设置
 map <leader>lp :!(rm cscope.files cscope.in.out cscope.out cscope.po.out .filenametags tags -rf &&echo update cscope... ...&&find . -name "*.h" -o -name "*.c" -o -name "*.cc" > cscope.files&&cscope -bkq -i cscope.files&&CSCOPE_DB=$(pwd)/cscope.out&&echo update tags ... ...&&ctags -R&&~/.vim/bash/mkfilenametags)<CR><CR>
@@ -43,12 +43,12 @@ let Tlist_Show_One_File=1    "只显示当前文件的tags
 let Tlist_WinWidth=30        "设置taglist宽度
 let Tlist_Exit_OnlyWindow=1  "tagList窗口是最后一个窗口，则退出Vim
 let Tlist_Use_Right_Window=1 "在Vim窗口右侧显示taglist窗口
-"let Tlist_Auto_Open=1	     "启动vim时自动打开taglist窗口
+"let Tlist_Auto_Open=1         "启动vim时自动打开taglist窗口
 let TlistHighlightTag=1      "当前Tag高亮显示
-let Tlist_GainFocus_On_ToggleOpen=1		"为1则使用TlistToggle打开标签列表窗口后会获焦点至于标签列表窗口；为0则taglist打开后焦点仍保持在代码窗口
-let Tlist_Close_On_Select=1		"选择标签或文件后是否自动关闭标签列表窗口
+let Tlist_GainFocus_On_ToggleOpen=1    	"为1则使用TlistToggle打开标签列表窗口后会获焦点至于标签列表窗口；为0则taglist打开后焦点仍保持在代码窗口
+let Tlist_Close_On_Select=1    	"选择标签或文件后是否自动关闭标签列表窗口
 map <leader>ll :Tlist<CR>
-"map <leader>ll :TlistToggle<CR>	"命令同上
+"map <leader>ll :TlistToggle<CR>    "命令同上
 " 设置NerdTree
 map <leader>kk :NERDTreeToggle<CR>
 "下划线设置
@@ -104,21 +104,21 @@ if has("cscope")
 "自动查找cscope.out文件
 "if has("cscope")
 "    set csprg=/usr/bin/cscope
-	set csto=0
-	set cst
-	set csverb
-	set cspc=3
-	"add any database in current dir
-	if filereadable("cscope.out")
-		cs add cscope.out
-	"else search cscope.out elsewhere
-	else
-		let cscope_file=findfile("cscope.out",".;")
-		let cscope_pre=matchstr(cscope_file,".*/")
-		if !empty(cscope_file) && filereadable(cscope_file)
-			exe "cs add" cscope_file cscope_pre
-		endif
-	endif
+    set csto=0
+    set cst
+    set csverb
+    set cspc=3
+    "add any database in current dir
+    if filereadable("cscope.out")
+    	cs add cscope.out
+    "else search cscope.out elsewhere
+    else
+    	let cscope_file=findfile("cscope.out",".;")
+    	let cscope_pre=matchstr(cscope_file,".*/")
+    	if !empty(cscope_file) && filereadable(cscope_file)
+    		exe "cs add" cscope_file cscope_pre
+    	endif
+    endif
 "endif
 "liyatang add end
 
@@ -265,9 +265,31 @@ inoremap " ""<ESC>i
 "显示行尾空格
 highlight WhitespaceEOL ctermbg=red guibg=red
 match WhitespaceEOL /\s\+$/
+"开启vim时去除行尾空格
 function StripTrailingWhite()
-	let winview = winsaveview()
-	silent! %s/\s\+$//
-	call winrestview(winview)
+    let winview = winsaveview()
+    silent! %s/\s\+$//
+    call winrestview(winview)
 endfunction
 autocmd BufReadPost * :call StripTrailingWhite()
+
+" 让lookupfile插件忽略大小写
+" lookup file with ignore case
+function! LookupFile_IgnoreCaseFunc(pattern)
+	let _tags = &tags
+	try
+		let &tags = eval(g:LookupFile_TagExpr)
+		let newpattern = '\c' . a:pattern
+		let tags = taglist(newpattern)
+	catch
+		echohl ErrorMsg | echo "Exception: " . v:exception | echohl NONE
+		return ""
+	finally
+		let &tags = _tags
+	endtry
+
+	"Show the matches for what is typed so far.
+	let files = map(tags, 'v:val["filename"]')
+	return files
+endfunction
+let g:LookupFile_LookupFunc = 'LookupFile_IgnoreCaseFunc'
