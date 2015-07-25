@@ -5,3 +5,4 @@ bindkey -k k9 screen
 bindkey -k k; detach
 bindkey -k F1 prev
 bindkey -k F2 next
+vbell off
