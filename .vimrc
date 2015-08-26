@@ -11,6 +11,12 @@ set nocompatible
 set ruler
 "显示行号
 set nu
+"取消换行。
+"set nowrap
+"搜索时忽略大小写
+"set ignorecase
+"在上下移动光标时，光标的上方或下方至少会保留显示的行数
+set scrolloff=7
 "语法高亮
 syntax on
 "寻找匹配时高亮度显示
