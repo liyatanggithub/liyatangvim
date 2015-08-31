@@ -14,7 +14,7 @@ set nu
 "取消换行。
 "set nowrap
 "搜索时忽略大小写
-"set ignorecase
+set ignorecase
 "在上下移动光标时，光标的上方或下方至少会保留显示的行数
 set scrolloff=7
 "语法高亮
@@ -29,14 +29,34 @@ set incsearch
 set tags=tags;
 "set autochdir
 
-"设置自动缩进
-set tabstop=4
-set softtabstop=4
+"设置TAB健
+"这个是用于程序中自动缩进所使用的空白长度指示的。一般来说为了保持程序的美观，和下面的参数最好一致。同时它也是符号移位长度的制定者
 set shiftwidth=4
-set autoindent
-set cindent
+"定义tab所等同的空格长度
+set tabstop=4
+"如果我们希望改变程序中的缩进怎么办？shiftwidth和tabstop不一样的话，你会发现程序比较难看的。这时候，softtabstop就起作用了。可以从vim的说明中看到，一旦设置了softtabstop的值时，你按下tab键，插入的是空格和tab制表符的混合，具体如何混合取决于你设定的softtabstop，举个例子，如果设定softtabstop=8,那么按下tab键，插入的就是正常的一个制表符;如果设定softtabstop=16,那么插入的就是两个制表符；如果softtabstop=12,那么插入的就是一个制表符加上4个空格；如果softtabstop=4呢？那么一开始，插入的就是4个空格，此时一旦你再按下一次tab，这次的四个空格就会和上次的四个空格组合起来变成一个制表符。换句话说，softtabstop是“逢8空格进1制表符,前提是你tabstop=8
+"set softtabstop=4
+"设置四个空格代替tab健
+set expandtab
+
+"设置自动缩进,主要有cindent、smartindent和autoindent三种
+"cindent Vim可以很好的识别出C和Java等结构化程序设计语言，并且能用C语言的缩进格式来处理程序的缩进结构。
+"set cindent
+"smartindent 在这种缩进模式中，每一行都和前一行有相同的缩进量，同时这种缩进形式能正确的识别出花括号，当遇到右花括号（}），则取消缩进形式。此外还增加了识别C语言关键字的功能。如果一行是以#开头的，那么这种格式将会被特殊对待而不采用缩进格式。
+set smartindent
+"autoindent 在这种缩进形式中，新增加的行和前一行使用相同的缩进形式。
+"set autoindent
+
 "设置匹配模式，显示括号配对情况
 set showmatch
+"括号补全
+inoremap ( ()<ESC>i
+inoremap [ []<ESC>i
+inoremap { {}<ESC>i
+inoremap < <><ESC>i
+inoremap ' ''<ESC>i
+inoremap " ""<ESC>i
+
 "设置折叠，选择用空格键来开关折叠
 set foldenable
 set foldmethod=syntax
@@ -261,13 +281,6 @@ let g:LookupFile_PreservePatternHistory = 1     "保存查找历史
 let g:LookupFile_AlwaysAcceptFirst = 1          "回车打开第一个匹配项目
 let g:LookupFile_AllowNewFiles = 0              "不允许创建不存在的文件
 
-"括号补全
-inoremap ( ()<ESC>i
-inoremap [ []<ESC>i
-inoremap { {}<ESC>i
-inoremap < <><ESC>i
-inoremap ' ''<ESC>i
-inoremap " ""<ESC>i
 "显示行尾空格
 highlight WhitespaceEOL ctermbg=red guibg=red
 match WhitespaceEOL /\s\+$/
