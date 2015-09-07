@@ -79,6 +79,10 @@ map <leader>ll :Tlist<CR>
 map <leader>kk :NERDTreeToggle<CR>
 "下划线设置
 set cursorline
+"set nocursorline
+"设置列线显示
+set cursorcolumn
+"set nocursorcolumn
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CSCOPE settings for vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
