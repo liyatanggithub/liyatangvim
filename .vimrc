@@ -77,12 +77,14 @@ map <leader>ll :Tlist<CR>
 "map <leader>ll :TlistToggle<CR>    "命令同上
 " 设置NerdTree
 map <leader>kk :NERDTreeToggle<CR>
-"下划线设置
+"下划线设置,当前行高亮
 set cursorline
 "set nocursorline
+hi CursorLine  cterm=NONE   ctermbg=darkred ctermfg=white
 "设置列线显示
 set cursorcolumn
 "set nocursorcolumn
+hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CSCOPE settings for vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
