@@ -78,13 +78,14 @@ map <leader>ll :Tlist<CR>
 " 设置NerdTree
 map <leader>kk :NERDTreeToggle<CR>
 "下划线设置,当前行高亮
+"ctermbg为背景色，ctermfg为前景色，可选颜色为black, brown, grey, blue, green,cyan, magenta, yellow, white等
 set cursorline
 "set nocursorline
-hi CursorLine  cterm=NONE   ctermbg=darkred ctermfg=white
+hi CursorLine  cterm=NONE   ctermbg=cyan ctermfg=white
 "设置列线显示
 set cursorcolumn
 "set nocursorcolumn
-hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white
+hi CursorColumn cterm=NONE ctermbg=cyan ctermfg=white
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CSCOPE settings for vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
