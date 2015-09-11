@@ -56,6 +56,7 @@ inoremap { {}<ESC>i
 inoremap < <><ESC>i
 inoremap ' ''<ESC>i
 inoremap " ""<ESC>i
+inoremap / //<ESC>i
 
 "设置折叠，选择用空格键来开关折叠
 set foldenable
