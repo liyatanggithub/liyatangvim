@@ -65,7 +65,10 @@ set foldlevelstart=99    "打开文件是默认不折叠代码
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 "ctags cscope lookupfile设置
 map <leader>lp :!(rm cscope.files cscope.in.out cscope.out cscope.po.out .filenametags tags -rf &&echo update cscope... ...&&find . -name "*.h" -o -name "*.c" -o -name "*.cc" > cscope.files&&cscope -bkq -i cscope.files&&CSCOPE_DB=$(pwd)/cscope.out&&echo update tags ... ...&&ctags -R&&~/.vim/bash/mkfilenametags)<CR><CR>
+
+"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 "taglist设置
+"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 let Tlist_Show_One_File=1    "只显示当前文件的tags
 let Tlist_WinWidth=30        "设置taglist宽度
 let Tlist_Exit_OnlyWindow=1  "tagList窗口是最后一个窗口，则退出Vim
@@ -76,8 +79,69 @@ let Tlist_GainFocus_On_ToggleOpen=1    	"为1则使用TlistToggle打开标签列
 let Tlist_Close_On_Select=1    	"选择标签或文件后是否自动关闭标签列表窗口
 map <leader>ll :Tlist<CR>
 "map <leader>ll :TlistToggle<CR>    "命令同上
+
+"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 " 设置NerdTree
+"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+" 绑定；kk键作为打开关闭NerdTree
 map <leader>kk :NERDTreeToggle<CR>
+"退出vim时如果打开NerdTree，一起关闭窗口
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
+"打开vim时自动打开NERDTree
+"autocmd vimenter * NERDTree
+"当打开NERDTree窗口时，自动显示Bookmarks
+let NERDTreeShowBookmarks=1
+"将NERDTree 的窗口设置在 vim 窗口的左侧
+let NERDTreeWinPos="left"
+"打开文件后关闭NerdTree窗口
+let NERDTreeQuitOnOpen=1
+"设置NerdTree窗口宽度
+let NERDTreeWinSize=30
+"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+"NerdTree使用帮助
+"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+"ctrl + w + h    光标 focus 左侧树形目录
+"ctrl + w + l    光标 focus 右侧文件显示窗口
+"ctrl + w + w    光标自动在左右侧窗口切换
+"ctrl + w + r    移动当前窗口的布局位置
+"o       在已有窗口中打开文件、目录或书签，并跳到该窗口
+"go      在已有窗口 中打开文件、目录或书签，但不跳到该窗口
+"t       在新 Tab 中打开选中文件/书签，并跳到新 Tab
+"T       在新 Tab 中打开选中文件/书签，但不跳到新 Tab
+"i       split 一个新窗口打开选中文件，并跳到该窗口
+"gi      split 一个新窗口打开选中文件，但不跳到该窗口
+"s       vsplit 一个新窗口打开选中文件，并跳到该窗口
+"gs      vsplit 一个新 窗口打开选中文件，但不跳到该窗口
+"!       执行当前文件
+"O       递归打开选中 结点下的所有目录
+"x       合拢选中结点的父目录
+"X       递归 合拢选中结点下的所有目录
+"e       Edit the current dif
+"双击    相当于 NERDTree-o
+"中键    对文件相当于 NERDTree-i，对目录相当于 NERDTree-e
+"D       删除当前书签
+"P       跳到根结点
+"p       跳到父结点
+"K       跳到当前目录下同级的第一个结点
+"J       跳到当前目录下同级的最后一个结点
+"k       跳到当前目录下同级的前一个结点
+"j       跳到当前目录下同级的后一个结点
+"C       将选中目录或选中文件的父目录设为根结点
+"u       将当前根结点的父目录设为根目录，并变成合拢原根结点
+"U       将当前根结点的父目录设为根目录，但保持展开原根结点
+"r       递归刷新选中目录
+"R       递归刷新根结点
+"m       显示文件系统菜单
+"cd      将 CWD 设为选中目录
+"I       切换是否显示隐藏文件
+"f       切换是否使用文件过滤器
+"F       切换是否显示文件
+"B       切换是否显示书签
+"q       关闭 NerdTree 窗口
+"?       切换是否显示 Quick Help
+"gT      前一个 tab
+"gt      后一个 tab
+
 "下划线设置,当前行高亮
 "ctermbg为背景色，ctermfg为前景色，可选颜色为black, brown, grey, blue, green,cyan, magenta, yellow, white等
 set cursorline
