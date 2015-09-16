@@ -103,31 +103,6 @@ filetype plugin on  "允许插件运行
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-"taglist设置
-let Tlist_Show_One_File=1               "只显示当前文件的tags
-let Tlist_WinWidth=30                   "设置taglist宽度
-let Tlist_Exit_OnlyWindow=1             "tagList窗口是最后一个窗口，则退出Vim
-let Tlist_Use_Right_Window=1            "在Vim窗口右侧显示taglist窗口
-"let Tlist_Auto_Open=1                  "启动vim时自动打开taglist窗口
-let TlistHighlightTag=1                 "当前Tag高亮显示
-let Tlist_GainFocus_On_ToggleOpen=1    	"TlistToggle打开标签列表窗口后会获焦点至于标签列表窗口
-let Tlist_Close_On_Select=1    	        "选择标签或文件后是否自动关闭标签列表窗口
-map <leader>ll :Tlist<CR>
-                                        "绑定;ll快捷键打开关闭TagList窗口
-"map <leader>ll :TlistToggle<CR>        "命令同上
-"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-"NerdTree设置
-let NERDTreeShowBookmarks=1             "当打开NERDTree窗口时，自动显示Bookmarks
-let NERDTreeWinPos="left"               "将NERDTree 的窗口设置在 vim 窗口的左侧
-let NERDTreeQuitOnOpen=1                "打开文件后关闭NerdTree窗口
-let NERDTreeWinSize=30                  "设置NerdTree窗口宽度
-map <leader>kk :NERDTreeToggle<CR>
-                                        "绑定;kk键作为打开关闭NerdTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
-                                        "退出vim时如果打开NerdTree，一起关闭窗口
-"autocmd vimenter * NERDTree
-                                        "打开vim时自动打开NERDTree
-"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 "ctags cscope lookupfile工程初始化设置
 map <leader>lp :!(rm cscope.files cscope.in.out cscope.out cscope.po.out .filenametags tags -rf &&echo update cscope... ...&&find . -name "*.h" -o -name "*.c" -o -name "*.cc" > cscope.files&&cscope -bkq -i cscope.files&&CSCOPE_DB=$(pwd)/cscope.out&&echo update tags ... ...&&ctags -R&&~/.vim/bash/mkfilenametags)<CR><CR>
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -202,5 +177,29 @@ let g:LookupFile_LookupFunc = 'LookupFile_IgnoreCaseFunc'
 "使用SuperTab
 Bundle 'supertab'
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-"使用Taglist
+"taglist设置
 Bundle 'taglist.vim'
+let Tlist_Show_One_File=1               "只显示当前文件的tags
+let Tlist_WinWidth=30                   "设置taglist宽度
+let Tlist_Exit_OnlyWindow=1             "tagList窗口是最后一个窗口，则退出Vim
+let Tlist_Use_Right_Window=1            "在Vim窗口右侧显示taglist窗口
+"let Tlist_Auto_Open=1                  "启动vim时自动打开taglist窗口
+let TlistHighlightTag=1                 "当前Tag高亮显示
+let Tlist_GainFocus_On_ToggleOpen=1    	"TlistToggle打开标签列表窗口后会获焦点至于标签列表窗口
+let Tlist_Close_On_Select=1    	        "选择标签或文件后是否自动关闭标签列表窗口
+map <leader>ll :Tlist<CR>
+                                        "绑定;ll快捷键打开关闭TagList窗口
+"map <leader>ll :TlistToggle<CR>        "命令同上
+"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+"NerdTree设置
+Bundle 'The-NERD-tree'
+let NERDTreeShowBookmarks=1             "当打开NERDTree窗口时，自动显示Bookmarks
+let NERDTreeWinPos="left"               "将NERDTree 的窗口设置在 vim 窗口的左侧
+let NERDTreeQuitOnOpen=1                "打开文件后关闭NerdTree窗口
+let NERDTreeWinSize=30                  "设置NerdTree窗口宽度
+map <leader>kk :NERDTreeToggle<CR>
+                                        "绑定;kk键作为打开关闭NerdTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
+                                        "退出vim时如果打开NerdTree，一起关闭窗口
+"autocmd vimenter * NERDTree
+                                        "打开vim时自动打开NERDTree
