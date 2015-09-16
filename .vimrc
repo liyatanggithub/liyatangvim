@@ -1,4 +1,25 @@
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+"Bundle插件管理设置
+set nocompatible             " be iMproved, required
+filetype off                 " required
+set rtp+=~/.vim/bundle/vundle/
+call vundle#begin()
+call vundle#rc()
+
+Bundle 'genutils'
+Bundle 'lookupfile'
+Bundle 'supertab'
+Bundle 'taglist.vim'
+Bundle 'The-NERD-tree'
+Bundle 'omnicppcomplete'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 "Vim基本设置
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 set nocompatible    "去除vim一致性模式，避免以前版本的一些bug和局限
@@ -12,7 +33,7 @@ set nocp            "不兼容vi
 set whichwrap=h,l,<,>
                     "左右移动光标到行首尾时自动换行
 set showcmd         "显示基本模式输入的命令
-filetype off         "vundle要求关闭自动识别文件类型
+filetype on         "自动识别文件类型
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 "搜索相关设置
 set wrapscan        "搜索过程在文件内部循环进行（默认）
@@ -99,10 +120,6 @@ map <leader>nb :set noscrollbind<CR>
 "Vim插件设置
 filetype plugin on  "允许插件运行
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-"Bundle插件管理设置
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 "ctags cscope lookupfile工程初始化设置
 map <leader>lp :!(rm cscope.files cscope.in.out cscope.out cscope.po.out .filenametags tags -rf &&echo update cscope... ...&&find . -name "*.h" -o -name "*.c" -o -name "*.cc" > cscope.files&&cscope -bkq -i cscope.files&&CSCOPE_DB=$(pwd)/cscope.out&&echo update tags ... ...&&ctags -R&&~/.vim/bash/mkfilenametags)<CR><CR>
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -146,8 +163,6 @@ if has("cscope")
 endif
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 "lookupfile设置
-Bundle 'genutils'
-Bundle 'lookupfile'
 let g:LookupFile_TagExpr = '"./.filenametags"'
 let g:LookupFile_MinPatLength = 2               "最少输入2个字符才开始查找
 let g:LookupFile_PreserveLastPattern = 0        "不保存上次查找的字符串
@@ -174,11 +189,7 @@ function! LookupFile_IgnoreCaseFunc(pattern)
 endfunction
 let g:LookupFile_LookupFunc = 'LookupFile_IgnoreCaseFunc'
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-"使用SuperTab
-Bundle 'supertab'
-"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 "taglist设置
-Bundle 'taglist.vim'
 let Tlist_Show_One_File=1               "只显示当前文件的tags
 let Tlist_WinWidth=30                   "设置taglist宽度
 let Tlist_Exit_OnlyWindow=1             "tagList窗口是最后一个窗口，则退出Vim
@@ -192,7 +203,6 @@ map <leader>ll :Tlist<CR>
 "map <leader>ll :TlistToggle<CR>        "命令同上
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 "NerdTree设置
-Bundle 'The-NERD-tree'
 let NERDTreeShowBookmarks=1             "当打开NERDTree窗口时，自动显示Bookmarks
 let NERDTreeWinPos="left"               "将NERDTree 的窗口设置在 vim 窗口的左侧
 let NERDTreeQuitOnOpen=1                "打开文件后关闭NerdTree窗口
@@ -203,6 +213,3 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeT
                                         "退出vim时如果打开NerdTree，一起关闭窗口
 "autocmd vimenter * NERDTree
                                         "打开vim时自动打开NERDTree
-"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-"omnicppcomplete设置
-Bundle 'omnicppcomplete'
