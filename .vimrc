@@ -45,7 +45,7 @@ set cindent         "很好的识别出C和Java等结构化程序语言，并且
 "配对字符补全
 inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
-inoremap { {}<ESC>i
+inoremap { {<CR>}<ESC>k$a<CR>
 inoremap < <><ESC>i
 inoremap ' ''<ESC>i
 inoremap " ""<ESC>i
