@@ -203,3 +203,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeT
                                         "退出vim时如果打开NerdTree，一起关闭窗口
 "autocmd vimenter * NERDTree
                                         "打开vim时自动打开NERDTree
+"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+"omnicppcomplete设置
+Bundle 'omnicppcomplete'
