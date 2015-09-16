@@ -200,4 +200,4 @@ endfunction
 let g:LookupFile_LookupFunc = 'LookupFile_IgnoreCaseFunc'
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 "使用SuperTab
-let g:SuperTabDefaultCompletionType="context"
+Bundle 'supertab'
