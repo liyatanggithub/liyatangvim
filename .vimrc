@@ -6,6 +6,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 call vundle#rc()
 
+Bundle 'liyatanggithub/vundle'
 Bundle 'genutils'
 Bundle 'lookupfile'
 Bundle 'supertab'
