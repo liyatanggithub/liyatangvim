@@ -13,6 +13,7 @@ Bundle 'supertab'
 Bundle 'taglist.vim'
 Bundle 'The-NERD-tree'
 Bundle 'omnicppcomplete'
+Bundle 'CmdlineComplete'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
