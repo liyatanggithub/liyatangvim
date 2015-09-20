@@ -6,7 +6,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 call vundle#rc()
 
-Bundle 'liyatanggithub/vundle'
+Bundle 'gmarik/vundle'
 Bundle 'genutils'
 Bundle 'lookupfile'
 Bundle 'supertab'
@@ -14,6 +14,7 @@ Bundle 'taglist.vim'
 Bundle 'The-NERD-tree'
 Bundle 'omnicppcomplete'
 Bundle 'CmdlineComplete'
+Plugin 'asins/vimcdoc'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -216,3 +217,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeT
                                         "退出vim时如果打开NerdTree，一起关闭窗口
 "autocmd vimenter * NERDTree
                                         "打开vim时自动打开NERDTree
+"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+"中文帮助文档
+let helptags="~/.vim/bundle/vimcdoc/doc"
+set helplang=cn
