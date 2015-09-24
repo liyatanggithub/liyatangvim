@@ -13,6 +13,7 @@ defscrollback 409600
 #断线的时候自动detach
 autodetach on
 #绑定快捷键
+bindkey -k k8 copy
 bindkey -k k9 screen
 bindkey -k k; detach
 bindkey -k F1 prev
