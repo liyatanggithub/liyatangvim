@@ -107,11 +107,12 @@ hi CursorLine  cterm=NONE   ctermbg=cyan ctermfg=white
 hi CursorColumn cterm=NONE ctermbg=cyan ctermfg=white
                     "颜色设置，ctermbg为背景色，ctermfg为前景色
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-"在输入模式下的光标移动
+"在输入模式下的光标移动，删除字符
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
+inoremap <C-d> <Del>
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 "卷动绑定属性绑定快捷键，所有设置了卷动绑定属性的窗口将一起卷动
 map <leader>b :set scrollbind<CR>
