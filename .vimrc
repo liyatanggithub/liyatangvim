@@ -94,7 +94,7 @@ autocmd BufReadPost * :call StripTrailingWhite()
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 "折叠设置
 set foldenable
-set foldmethod=syntax
+set foldmethod=indent
 set foldlevelstart=99
                     "打开文件是默认不折叠代码
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
