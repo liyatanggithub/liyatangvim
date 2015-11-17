@@ -16,6 +16,8 @@ Bundle 'omnicppcomplete'
 Bundle 'CmdlineComplete'
 Plugin 'asins/vimcdoc'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'dyng/ctrlsf.vim'    "需要安装2.0以上ack,可使用如下命令安装到环境变量
+                            "curl http://beyondgrep.com/ack-2.14-single-file > ~/.bin/ack && chmod 0755 !#:3
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -231,4 +233,9 @@ let g:indent_guides_guide_size=1                "色块宽度
 let g:indent_guides_auto_colors = 0             "颜色设置
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
-map <leader>lk :IndentGuidesToggle<CR>          "快捷键打开关闭
+map <leader>lk :IndentGuidesToggle<CR>
+                                                "快捷键打开关闭
+"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+"ctrlsf设置
+map <leader>f :CtrlSF<CR>
+                                        "快捷键打开关闭
