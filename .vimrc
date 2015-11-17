@@ -18,6 +18,7 @@ Plugin 'asins/vimcdoc'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'dyng/ctrlsf.vim'    "需要安装2.0以上ack,可使用如下命令安装到环境变量
                             "curl http://beyondgrep.com/ack-2.14-single-file > ~/.bin/ack && chmod 0755 !#:3
+Plugin 'scrooloose/nerdcommenter'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -77,7 +78,7 @@ inoremap { {<CR>}<ESC>k$a<CR>
 inoremap < <><ESC>i
 inoremap ' ''<ESC>i
 inoremap " ""<ESC>i
-inoremap / //<ESC>a
+"inoremap / //<ESC>a
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 "括号设置
 set showmatch       "设置匹配模式，显示括号配对情况
@@ -159,15 +160,15 @@ if has("cscope")
     "   'f'   file:   open the filename under cursor
     "   'i'   includes: find files that include the filename under cursor
     "   'd'   called: find functions that function under cursor calls
-        nmap <C-\> :cs find s <C-R>=expand("<cword>")<CR><CR>
-    "nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-    "nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-    "nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-    "nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-    "nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-    "nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-    "nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-    "nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\> :cs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 endif
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 "lookupfile设置
@@ -181,14 +182,14 @@ let g:LookupFile_AllowNewFiles = 0              "不允许创建不存在的文�
 function! LookupFile_IgnoreCaseFunc(pattern)
 	let _tags = &tags
 	try
-		let &tags = eval(g:LookupFile_TagExpr)
-		let newpattern = '\c' . a:pattern
-		let tags = taglist(newpattern)
+	    let &tags = eval(g:LookupFile_TagExpr)
+	    let newpattern = '\c' . a:pattern
+	    let tags = taglist(newpattern)
 	catch
-		echohl ErrorMsg | echo "Exception: " . v:exception | echohl NONE
-		return ""
+	    echohl ErrorMsg | echo "Exception: " . v:exception | echohl NONE
+	    return ""
 	finally
-		let &tags = _tags
+	    let &tags = _tags
 	endtry
 
 	"Show the matches for what is typed so far.
