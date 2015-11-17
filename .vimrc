@@ -33,7 +33,7 @@ filetype plugin indent on    " required
 set nocompatible    "去除vim一致性模式，避免以前版本的一些bug和局限
 set nu              "显示行号
 "set nowrap         "指定不折行。如果一行太长,超过屏幕宽度,则向右边延伸到屏幕外面
-set scrolloff=7     "在上下移动光标时，光标的上方或下方至少会保留显示的行数
+set scrolloff=100   "在上下移动光标时，光标的上方或下方至少会保留显示的行数
 syntax on           "语法高亮
 "set autochdir      "自动设置当前目录为正在编辑的目录
 set nocp            "不兼容vi
