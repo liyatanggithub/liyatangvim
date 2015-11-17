@@ -15,6 +15,7 @@ Bundle 'The-NERD-tree'
 Bundle 'omnicppcomplete'
 Bundle 'CmdlineComplete'
 Plugin 'asins/vimcdoc'
+Plugin 'nathanaelkane/vim-indent-guides'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -102,9 +103,9 @@ nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 "行／列线设置
 set cursorline      "行线设置
-set cursorcolumn    "列线设置
+"set cursorcolumn    "列线设置
 hi CursorLine  cterm=NONE   ctermbg=cyan ctermfg=white
-hi CursorColumn cterm=NONE ctermbg=cyan ctermfg=white
+"hi CursorColumn cterm=NONE ctermbg=cyan ctermfg=white
                     "颜色设置，ctermbg为背景色，ctermfg为前景色
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 "在输入模式下的光标移动，删除字符
@@ -222,3 +223,12 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeT
 "中文帮助文档
 let helptags="~/.vim/bundle/vimcdoc/doc"
 set helplang=cn
+"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+"vim-indent-guides设置
+let g:indent_guides_enable_on_vim_startup=1     "随 vim 自启动
+let g:indent_guides_start_level=2               "从第二层开始可视化显示缩进
+let g:indent_guides_guide_size=1                "色块宽度
+let g:indent_guides_auto_colors = 0             "颜色设置
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+map <leader>lk :IndentGuidesToggle<CR>          "快捷键打开关闭
