@@ -19,6 +19,7 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'dyng/ctrlsf.vim'    "需要安装2.0以上ack,可使用如下命令安装到环境变量
                             "curl http://beyondgrep.com/ack-2.14-single-file > ~/.bin/ack && chmod 0755 !#:3
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'easymotion/vim-easymotion'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
