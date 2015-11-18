@@ -21,6 +21,7 @@ Plugin 'dyng/ctrlsf.vim'    "需要安装2.0以上ack,可使用如下命令安�
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'godlygeek/tabular'
+Plugin 'vim-scripts/Visual-Mark'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -246,5 +247,6 @@ map <leader>lk :IndentGuidesToggle<CR>
 map <leader>f :CtrlSF<CR>
                                         "快捷键打开关闭
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+"tabular设置
 map <leader>bb :Tabularize /=<CR>
 map <leader>bn :Tabularize /
