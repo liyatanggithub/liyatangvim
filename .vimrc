@@ -116,7 +116,7 @@ colorscheme default
 "行／列线设置
 set cursorline      "行线设置
 "set cursorcolumn    "列线设置
-hi CursorLine  cterm=NONE   ctermbg=cyan ctermfg=white
+hi CursorLine  cterm=NONE   ctermbg=darkred ctermfg=white
 "hi CursorColumn cterm=NONE ctermbg=cyan ctermfg=white
                     "颜色设置，ctermbg为背景色，ctermfg为前景色
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
