@@ -249,6 +249,14 @@ map <leader>lk :IndentGuidesToggle<CR>
 "ctrlsf设置
 map <leader>f :CtrlSF<CR>
                                         "快捷键打开关闭
+let g:ctrlsf_position = 'bottom'
+let g:ctrlsf_mapping = {
+    \ "next": "n",
+    \ "prev": "N",
+    \ "openb": "",
+    \ }
+"let g:ctrlsf_selected_line_hl = 'op'
+let g:ctrlsf_winsize = '40%'
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 "tabular设置
 map <leader>bb :Tabularize /=<CR>
