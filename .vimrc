@@ -116,7 +116,7 @@ colorscheme default
 "行／列线设置
 set cursorline      "行线设置
 "set cursorcolumn    "列线设置
-hi CursorLine  cterm=NONE   ctermbg=darkred ctermfg=white
+"hi CursorLine  cterm=NONE   ctermbg=darkred ctermfg=white
 "hi CursorColumn cterm=NONE ctermbg=cyan ctermfg=white
                     "颜色设置，ctermbg为背景色，ctermfg为前景色
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -224,7 +224,7 @@ map <leader>ll :Tlist<CR>
 let NERDTreeShowBookmarks=1             "当打开NERDTree窗口时，自动显示Bookmarks
 let NERDTreeWinPos="left"               "将NERDTree 的窗口设置在 vim 窗口的左侧
 let NERDTreeQuitOnOpen=1                "打开文件后关闭NerdTree窗口
-let NERDTreeWinSize=30                  "设置NerdTree窗口宽度
+let NERDTreeWinSize=80                  "设置NerdTree窗口宽度
 map <leader>kk :NERDTreeToggle<CR>
                                         "绑定;kk键作为打开关闭NerdTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
