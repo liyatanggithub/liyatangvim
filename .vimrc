@@ -22,6 +22,10 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'godlygeek/tabular'
 Plugin 'vim-scripts/Visual-Mark'
+"Plugin 'tomtom/tlib_vim'
+"Plugin 'MarcWeber/vim-addon-mw-utils'
+"Plugin 'garbas/vim-snipmate'
+"Plugin 'honza/vim-snippets'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -43,7 +47,6 @@ set whichwrap=h,l,<,>
                     "左右移动光标到行首尾时自动换行
 set showcmd         "显示基本模式输入的命令
 set showmode        "显示当前模式
-filetype on         "自动识别文件类型
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 "状态栏设置
 set ruler           "显示当前光标的行列信息
@@ -119,6 +122,16 @@ set cursorline      "行线设置
 "hi CursorLine  cterm=NONE   ctermbg=darkred ctermfg=white
 "hi CursorColumn cterm=NONE ctermbg=cyan ctermfg=white
                     "颜色设置，ctermbg为背景色，ctermfg为前景色
+"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+"颜色设置
+set t_Co=256
+if ! has("gui_running")
+    set t_Co=256
+endif
+if &diff
+    "colors delek
+    colors blue
+endif
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 "在输入模式下的光标移动，删除字符
 inoremap <C-h> <Left>
@@ -261,3 +274,5 @@ let g:ctrlsf_winsize = '40%'
 "tabular设置
 map <leader>bb :Tabularize /=<CR>
 map <leader>bn :Tabularize /
+
+nmap <Leader>/ :exec 'lvimgrep /' . input('/', expand('<cword>')) . '/j % <bar> lopen'<CR>
