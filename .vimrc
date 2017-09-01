@@ -22,6 +22,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'godlygeek/tabular'
 Plugin 'vim-scripts/Visual-Mark'
+Plugin 'guns/xterm-color-table.vim'
 "Plugin 'tomtom/tlib_vim'
 "Plugin 'MarcWeber/vim-addon-mw-utils'
 "Plugin 'garbas/vim-snipmate'
@@ -116,13 +117,6 @@ nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 "主题设置
 colorscheme default
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-"行／列线设置
-set cursorline      "行线设置
-"set cursorcolumn    "列线设置
-"hi CursorLine  cterm=NONE   ctermbg=darkred ctermfg=white
-"hi CursorColumn cterm=NONE ctermbg=cyan ctermfg=white
-                    "颜色设置，ctermbg为背景色，ctermfg为前景色
-"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 "颜色设置
 set t_Co=256
 if ! has("gui_running")
@@ -132,6 +126,13 @@ if &diff
     "colors delek
     colors blue
 endif
+"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+"行／列线设置
+set cursorline      "行线设置
+"set cursorcolumn    "列线设置
+hi CursorLine  cterm=NONE   ctermbg=13 ctermfg=white
+"hi CursorColumn cterm=NONE ctermbg=13 ctermfg=white
+                    "颜色设置，ctermbg为背景色，ctermfg为前景色
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 "在输入模式下的光标移动，删除字符
 inoremap <C-h> <Left>
