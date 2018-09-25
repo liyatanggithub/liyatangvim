@@ -154,7 +154,8 @@ map <leader>nb :set noscrollbind<CR>
 filetype plugin on  "允许插件运行
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 "ctags cscope lookupfile工程初始化设置
-map <leader>lp :!(rm cscope.files cscope.in.out cscope.out cscope.po.out .filenametags tags -rf &&echo update cscope... ...&&find . -name "*.h" -o -name "*.c" -o -name "*.cc" > cscope.files&&cscope -bkq -i cscope.files&&CSCOPE_DB=$(pwd)/cscope.out&&echo update tags ... ...&&ctags -R&&~/.vim/bash/mkfilenametags)<CR><CR>
+map <leader>lp :!(rm cscope.files cscope.in.out cscope.out cscope.po.out .filenametags tags -rf&&find $PWD -name "*.h" -o -name "*.c" -o -name "*.cc">cscope.files&&cscope -bkq -i cscope.files&&CSCOPE_DB=$(pwd)/cscope.out&&ctags -R&&~/.vim/bash/mkfilenametags)<CR><CR>
+"map <leader>lp :!(rm cscope.files cscope.in.out cscope.out cscope.po.out .filenametags tags -rf&&find $PWD -name "*.h" -o -name "*.c" -o -name "*.cc" -o -name "*.mk">cscope.files&&cscope -bkq -i cscope.files&&CSCOPE_DB=$(pwd)/cscope.out&&ctags -R&&~/.vim/bash/mkfilenametags)<CR><CR>
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 "Ctags设置
 set tags=tags;      "ctags设置tags文件，当前路径没有tags文件时向上级路径寻找
@@ -164,9 +165,9 @@ if has("cscope")
     set cscopetag
     set csto=0
     set cst
-    set csverb
     set cspc=3
     set cscopeverbose
+    set nocsverb    "将cs add cscope.out放在set nocsverb和set csverb中间，避免打开vim时出现输入enter键的情况
     if filereadable("cscope.out")
     	cs add cscope.out
     else
@@ -176,6 +177,7 @@ if has("cscope")
     		exe "cs add" cscope_file cscope_pre
     	endif
     endif
+    set csverb
     "   's'   symbol: find all references to the token under cursor
     "   'g'   global: find global definition(s) of the token under cursor
     "   'c'   calls:  find all calls to the function name under cursor
@@ -191,7 +193,7 @@ if has("cscope")
     nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
     nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
     nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-    nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap <C-\>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
     nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 endif
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
